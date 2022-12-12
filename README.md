@@ -1,5 +1,7 @@
 # envtpl
 
+[![main](https://github.com/chenrui333/envtpl/actions/workflows/main.yml/badge.svg)](https://github.com/chenrui333/envtpl/actions/workflows/main.yml)
+
 This is a fork of [subfuzion/envtpl](https://github.com/subfuzion/envtpl).
 
 `envtpl` renders [Go templates] on the command line using environment variables.
