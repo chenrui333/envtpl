@@ -1,4 +1,4 @@
-FROM golang:1.11.4
+FROM golang:1.19-alpine
 WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build \
@@ -9,4 +9,3 @@ RUN ./test/test.sh
 FROM scratch
 COPY --from=0 /go/bin/envtpl /bin/envtpl
 ENTRYPOINT [ "/bin/envtpl" ]
-
