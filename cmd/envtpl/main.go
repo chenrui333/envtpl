@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -43,7 +42,7 @@ var RootCmd = &cobra.Command{
 			t, err = parseFiles(args...)
 			die(err)
 		} else {
-			bytes, err := ioutil.ReadAll(os.Stdin)
+			bytes, err := io.ReadAll(os.Stdin)
 			die(err)
 			t, err = parse(string(bytes))
 			die(err)
@@ -126,4 +125,3 @@ func main() {
 	err := RootCmd.Execute()
 	die(err)
 }
-

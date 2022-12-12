@@ -14,7 +14,8 @@ const (
 )
 
 // version build metadata set by build flag:
-//     go build -ldflags "-X main.AppVersionMetadata $(date -u +%s)"
+//
+//	go build -ldflags "-X main.AppVersionMetadata $(date -u +%s)"
 var AppVersionMetadata string
 
 func Version() string {
@@ -33,4 +34,3 @@ func Version() string {
 	return fmt.Sprintf("%s %d.%d.%d%s (Go runtime %s).\nCopyright (c) 2016-2019, Tony Pujals.",
 		AppName, AppVersionMajor, AppVersionMinor, AppVersionPatch, suffix, runtime.Version())
 }
-
