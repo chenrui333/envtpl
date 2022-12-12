@@ -6,11 +6,17 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"text/template"
 
 	"github.com/Masterminds/sprig"
 	"github.com/spf13/cobra"
+)
+
+const (
+	AppName    = "envtpl"
+	AppVersion = "1.0.1"
 )
 
 // options
@@ -30,7 +36,8 @@ var RootCmd = &cobra.Command{
 	Long:  `Render go templates from environment variables.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if version {
-			fmt.Println(Version())
+			fmt.Printf("%s %s (Go runtime %s).\nCopyright (c) 2022, Rui Chen.",
+				AppName, AppVersion, runtime.Version())
 			os.Exit(0)
 		}
 

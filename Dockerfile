@@ -2,7 +2,7 @@ FROM golang:1.19-alpine
 WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build \
-	-ldflags "-X main.AppVersionMetadata=$(date -u +%s)" \
+	-ldflags "-s -w" \
 	-a -installsuffix cgo -o /go/bin/envtpl ./cmd/envtpl/.
 RUN ./test/test.sh
 
