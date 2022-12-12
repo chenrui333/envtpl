@@ -16,7 +16,7 @@ import (
 
 const (
 	AppName    = "envtpl"
-	AppVersion = "2.0.0"
+	AppVersion = "2.0.1"
 )
 
 // options
