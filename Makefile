@@ -3,7 +3,7 @@
 SOURCES := $(shell find . -not \( -path vendor -prune \) -name \*.go -print)
 
 bin/envtpl: $(SOURCES)
-	go build -ldflags "-X main.AppVersionMetadata=$$(date -u +%s)" \
+	go build -ldflags "-s -w -X main.AppVersionMetadata=$$(date -u +%s)" \
 		-o bin/envtpl \
 		./cmd/envtpl/.
 
@@ -18,4 +18,3 @@ image:
 test:
 	docker-compose -f docker-compose.test.yml build
 	docker-compose -f docker-compose.test.yml run --rm sut
-
