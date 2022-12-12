@@ -1,25 +1,45 @@
-env:
-  - CGO_ENABLED=0
+# Configuration for https://goreleaser.com/
+project_name: envtpl
+
 builds:
   - id: envtpl
-    main: ./cmd/envtpl/main.go
     binary: envtpl
-    targets:
-      - darwin_amd64
-      - darwin_arm64
-      - linux_386
-      - linux_amd64
-      - linux_arm
-      - linux_arm64
+    main: ./cmd/envtpl/main.go
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    env:
+      - CGO_ENABLED=0
     ldflags:
       -s -w
 
 archives:
-  - id: zip
-    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
-    format: zip
+  - id: tarball
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    builds:
+      - envtpl
+    replacements:
+      # https://en.wikipedia.org/wiki/Uname
+      # uname -m compatible.
+      amd64: x86_64
+      # 386: i386
+      # uname -s compatible.
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
     files:
-      - none*
+      - README.md
+      - LICENSE
 
 checksum:
   name_template: 'checksums.txt'
