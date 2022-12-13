@@ -3,6 +3,7 @@
   "extends": [
     "config:base"
   ],
+  "commitMessagePrefix": "chore(deps): ",
   "dependencyDashboard": true,
   "labels": ["dependencies"],
   "platformAutomerge": true,
