@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine
+FROM golang:1.22-alpine
 WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build \
