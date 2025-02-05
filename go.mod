@@ -1,6 +1,6 @@
 module github.com/chenrui333/envtpl
 
-go 1.23
+go 1.23.6
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
