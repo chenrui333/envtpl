@@ -24,7 +24,7 @@ match the keys of the internal environment variable map object (see example).
 ## Installation
 
 ```sh
-$ go install github.com/chenrui333/envtpl/v2@latest
+$ go install github.com/chenrui333/envtpl/v2/cmd/envtpl@latest
 ```
 
 ## Usage
