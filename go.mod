@@ -1,4 +1,4 @@
-module github.com/chenrui333/envtpl
+module github.com/chenrui333/envtpl/v2
 
 go 1.23.6
 

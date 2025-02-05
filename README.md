@@ -21,9 +21,11 @@ The biggest obvious difference is that `Go` template variables represent a path 
 a data context, so `envtpl` variables will need to be prepended with a leading `.` to
 match the keys of the internal environment variable map object (see example).
 
-## Get it
+## Installation
 
-    $ go get github.com/chenrui333/envtpl/...
+```sh
+$ go install github.com/chenrui333/envtpl/v2@latest
+```
 
 ## Usage
 
