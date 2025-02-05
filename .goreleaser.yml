@@ -32,15 +32,15 @@ archives:
         format: zip
     builds:
       - envtpl
-    replacements:
-      # https://en.wikipedia.org/wiki/Uname
-      # uname -m compatible.
-      amd64: x86_64
-      # 386: i386
-      # uname -s compatible.
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
+    name_template: >-
+          {{- .ProjectName }}_
+          {{- .Version }}_
+          {{- title .Os }}_
+          {{- if eq .Arch "amd64" }}x86_64
+          {{- else if eq .Arch "386" }}i386
+          {{- else if eq .Arch "arm64" }}arm64
+          {{- else }}{{ .Arch }}{{ end }}
+          {{- if .Arm }}v{{ .Arm }}{{ end }}
     files:
       - README.md
       - LICENSE
@@ -49,7 +49,7 @@ checksum:
   name_template: 'checksums.txt'
 
 changelog:
-  skip: true
+  disable: true
 
 release:
   github:
