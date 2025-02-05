@@ -1,10 +1,14 @@
-# Configuration for https://goreleaser.com/
+version: 2
+
 project_name: envtpl
+
+env:
+  - CGO_ENABLED=0
 
 builds:
   - id: envtpl
     binary: envtpl
-    main: ./cmd/envtpl/main.go
+    main: ./cmd/envtpl
     goos:
       - darwin
       - linux
@@ -15,8 +19,8 @@ builds:
     ignore:
       - goos: windows
         goarch: arm64
-    env:
-      - CGO_ENABLED=0
+    flags:
+      - -trimpath
     ldflags:
       -s -w
 
