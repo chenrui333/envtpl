@@ -23,6 +23,14 @@ match the keys of the internal environment variable map object (see example).
 
 ## Installation
 
+### Homebrew
+
+```sh
+$ brew install chenrui333/tap/envtpl
+```
+
+### `go install`
+
 ```sh
 $ go install github.com/chenrui333/envtpl/v2/cmd/envtpl@latest
 ```
