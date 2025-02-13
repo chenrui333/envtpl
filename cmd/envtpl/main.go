@@ -45,7 +45,7 @@ var RootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		if showVersion {
 			fmt.Printf("%s %s (commit: %s, built at: %s, Go runtime: %s)\n",
-				AppName, buildVersion, buildCommit, buildDate, runtime.Version())
+				AppName, version, commit, date, runtime.Version())
 			os.Exit(0)
 		}
 
