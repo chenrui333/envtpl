@@ -16,13 +16,21 @@ import (
 
 const (
 	AppName    = "envtpl"
-	AppVersion = "2.0.2"
+)
+
+// goreleaser convention, https://goreleaser.com/customization/builds/go/
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
 )
 
 // options
-var missingKey = "default"
-var output string
-var version bool
+var (
+	missingKey  = "default"
+	output      string
+	showVersion bool
+)
 
 func die(err error) {
 	if err != nil {
@@ -35,9 +43,9 @@ var RootCmd = &cobra.Command{
 	Short: "Render go templates from environment variables",
 	Long:  `Render go templates from environment variables.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if version {
-			fmt.Printf("%s %s (Go runtime %s).\nCopyright (c) 2022, Rui Chen.",
-				AppName, AppVersion, runtime.Version())
+		if showVersion {
+			fmt.Printf("%s %s (commit: %s, built at: %s, Go runtime: %s)\n",
+				AppName, buildVersion, buildCommit, buildDate, runtime.Version())
 			os.Exit(0)
 		}
 
@@ -127,7 +135,7 @@ func customFuncMap() template.FuncMap {
 func main() {
 	RootCmd.Flags().StringVarP(&missingKey, "missingkey", "m", missingKey, "Strategy for dealing with missing keys: [default|zero|error]")
 	RootCmd.Flags().StringVarP(&output, "output", "o", output, "The rendered output file")
-	RootCmd.Flags().BoolVarP(&version, "version", "v", false, "Prints version")
+	RootCmd.Flags().BoolVarP(&showVersion, "version", "v", false, "Print version information")
 
 	err := RootCmd.Execute()
 	die(err)
