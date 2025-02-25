@@ -6,8 +6,9 @@
   "commitMessagePrefix": "chore(deps): ",
   "dependencyDashboard": true,
   "labels": ["dependencies"],
-  "automerge": true,
-  "platformAutomerge": true,
+  "automerge": true, // renovate will merge PRs if they pass all checks
+  "automergeStrategy": "rebase",
+  "platformAutomerge": true, // renovate use github native merge API endpoint for merging
   "schedule": [
     "before 2am"
   ],
