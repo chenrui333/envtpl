@@ -6,6 +6,7 @@
   "commitMessagePrefix": "chore(deps): ",
   "dependencyDashboard": true,
   "labels": ["dependencies"],
+  "automerge": true,
   "platformAutomerge": true,
   "schedule": [
     "before 2am"
