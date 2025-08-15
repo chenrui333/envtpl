@@ -74,7 +74,11 @@ var RootCmd = &cobra.Command{
 		} else {
 			f, err := os.Create(output)
 			die(err)
-			defer f.Close()
+			defer func() {
+				if cerr := f.Close(); cerr != nil {
+					log.Printf("error closing output file: %v", cerr)
+				}
+			}()
 			w = io.Writer(f)
 		}
 
